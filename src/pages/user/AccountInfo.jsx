@@ -2,7 +2,10 @@ import React from 'react'
 
 function AccountInfo() {
   return (
-    <div>AccountInfo</div>
+    <div>AccountInfo
+
+      sdfsdf
+    </div>
   )
 }
 

@@ -1,16 +1,19 @@
 import React from "react";
-import { Link } from "react-router";
+import { Link } from "react-router-dom";
 import { Logo, MenuDropdown, SearchIcon } from "../assets";
 import Register from "../pages/auth/Register";
 import Login from "../pages/auth/Login";
 import Menubar from "./Menubar";
+import useUserState from "../states/userState";
 
 function MainNav() {
-  const isLogedIn = null;
+  const isLoggedIn = useUserState((state) => state.token); // Assuming token is set upon login
+  const logout = useUserState((state) => state.logout);
+
   return (
     <nav className="bg-white text-gray-700 navbar">
-      {isLogedIn ? (
-        <div className="w-screen max-h-full">
+      {isLoggedIn ? (
+        <div id="nav01" className="w-screen max-h-full">
           <div className="flex flex-1 gap-4 bg-red-400 h-20 ">
             <div className="flex align-middle items-center">
               <Menubar />
@@ -23,6 +26,7 @@ function MainNav() {
               <Link to="/about" className="btn btn-ghost text-[18px]">
                 About
               </Link>
+              <Link className="btn btn-ghost text-[18px]" onClick={logout}>Log out</Link>
             </div>
           </div>
 
@@ -35,9 +39,8 @@ function MainNav() {
           </div>
         </div>
       ) : (
-        <div className="w-screen max-h-full">
+        <div id="nav02" className="w-screen max-h-full">
           <div className="flex flex-1 flex align-middle items-center ">
-            {/* <Link to="/" className="btn btn-ghost text-lg">Logo</Link> */}
             <a href="/">
               <Logo />
             </a>
@@ -47,7 +50,7 @@ function MainNav() {
             <Link to="/about" className="btn btn-ghost text-[18px]">
               About
             </Link>
-            <Menubar />
+            {/* <Menubar /> */}
           </div>
 
           <div className="flex flex-1 justify-end gap-4">

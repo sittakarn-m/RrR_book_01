@@ -1,8 +1,12 @@
 import React from 'react'
+import { Link } from 'react-router'
 
 function Dashboard() {
   return (
-    <div>Dashboard</div>
+    <div>
+      <Link className='btn' to='/admin/manage-books'>sdfsdf</Link>
+
+    </div>
   )
 }
 

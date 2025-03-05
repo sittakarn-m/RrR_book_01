@@ -1,9 +1,13 @@
-import React from 'react'
+import React from "react";
+import AddBookForm from "../../components/AddBookForm";
+
 
 function ManageBooks() {
   return (
-    <div>ManageBooks</div>
-  )
+    <div>
+      <AddBookForm/>
+    </div>
+  );
 }
 
-export default ManageBooks
+export default ManageBooks;

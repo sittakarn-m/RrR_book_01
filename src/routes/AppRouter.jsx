@@ -40,7 +40,7 @@ function AppRouter() {
           <Route path="categories/:name" element={<Categories />} />
           <Route path="products/:productName" element={<ProductDetail />} />
           <Route path="cart" element={<Cart />} />
-          <Route path="check-out" element={<Checkout />} />
+          <Route path="checkout" element={<Checkout />} />
         </Route>
 
         {/* Private [USER] */}
