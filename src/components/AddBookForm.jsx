@@ -12,7 +12,7 @@ function AddBookForm() {
   const [categoryId, setCategoryId] = useState("");
 
   const handleSubmit = async (e) => {
-    e.preventDefault(); // ✅ Fix missing parentheses
+    e.preventDefault();
 
     try {
       const formData = new FormData();
@@ -39,51 +39,64 @@ function AddBookForm() {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} className="flex flex-col border w-96 ">
       <input
+        className="border py-3"
         type="text"
         placeholder="Title"
         value={title}
         onChange={(e) => setTitle(e.target.value)}
       />
       <input
+        className="border py-3"
         type="text"
         placeholder="Author"
         value={author}
         onChange={(e) => setAuthor(e.target.value)}
       />
       <input
+        className="border py-3"
         type="text"
         placeholder="Publisher"
         value={publisher}
         onChange={(e) => setPublisher(e.target.value)}
       />
       <textarea
+        className="border py-3"
         placeholder="Detail"
         value={detail}
         onChange={(e) => setDetail(e.target.value)}
       />
       <input
+        className="border py-3"
         type="number"
         placeholder="Price Per Day"
         value={pricePerDay}
         onChange={(e) => setPricePerDay(e.target.value)}
       />
       <input
+        className="border py-3"
         type="number"
         placeholder="Stock"
         value={stock}
         onChange={(e) => setStock(e.target.value)}
       />
       <input
+        className="border py-3"
         type="number"
         placeholder="Category ID"
         value={categoryId}
         onChange={(e) => setCategoryId(e.target.value)}
       />
-      <input type="file" onChange={(e) => setCoverImage(e.target.files[0])} />
+      <input
+        className="border py-3"
+        type="file"
+        onChange={(e) => setCoverImage(e.target.files[0])}
+      />
 
-      <button type="submit">เพิ่มหนังสือ</button>
+      <button className="btn rounded-none" type="submit">
+        เพิ่มหนังสือ
+      </button>
     </form>
   );
 }

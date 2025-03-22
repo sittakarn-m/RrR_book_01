@@ -3,6 +3,7 @@ import React from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { registerSchema } from "../../utils/validator"; // Adjust the import path
+import { toast } from "react-toastify";
 
 function Register() {
   const {
@@ -28,15 +29,22 @@ function Register() {
 
   const onSubmit = async (data) => {
     try {
-      const rs = await axios.post("http://localhost:8899/auth/register", data);
-      console.log("Registration successful:", rs.data);
+      const response = await axios.post(
+        "http://localhost:8899/auth/register",
+        data,
+        {
+          withCredentials: true,
+        }
+      );
+      console.log("Registration successful:", response.data);
       reset();
-      document.getElementById("my_modal_3").close();
-      alert("Registration successful!"); // Replace toast with a simple alert
+      toast.success("Registration successful!");
     } catch (err) {
-      const errMsg = err.response?.data?.error || err.message;
-      console.error("Registration failed:", errMsg);
-      alert(`Registration failed: ${errMsg}`); // Replace toast with a simple alert
+      console.error(
+        "Registration failed:",
+        err.response?.data?.message || err.message
+      );
+      toast.error("Registration failed: " + err.response?.data?.message);
     }
   };
 

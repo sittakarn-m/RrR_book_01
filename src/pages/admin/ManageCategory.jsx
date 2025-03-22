@@ -1,9 +1,12 @@
-import React from 'react'
+import React from "react";
+import CategoryList from "../../components/CategoryList";
 
 function ManageCategory() {
   return (
-    <div>ManageCategory</div>
-  )
+    <div className="bg-white">
+      <CategoryList />
+    </div>
+  );
 }
 
-export default ManageCategory
+export default ManageCategory;

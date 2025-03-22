@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import useUserState from "../../states/userState";
+import useUserStore from "../../states/useUserStore";
+import { toast, ToastContainer } from "react-toastify";
 
 function Login() {
-  const login = useUserState((state) => state.login);
+  const login = useUserStore((state) => state.login);
   const navigate = useNavigate();
 
   const [input, setInput] = useState({
@@ -12,13 +13,12 @@ function Login() {
   });
 
   const hdlChange = (e) => {
-    setInput((prv) => ({ ...prv, [e.target.name]: e.target.value }));
+    setInput((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
 
-
-  // Check role and redirect
+  // Role-based redirect
   const roleRedirect = (role) => {
-    console.log("User Role:", role); 
+    console.log("User Role:", role);
     if (role === "ADMIN") {
       navigate("/admin");
     } else {
@@ -27,34 +27,26 @@ function Login() {
   };
 
   const hdlLogin = async (e) => {
+    e.preventDefault();
+
+    if (!(input.identifier.trim() && input.password.trim())) {
+      return toast.warn("Please fill in all fields");
+    }
+
     try {
-      e.preventDefault();
-      // Validation
-      if (!(input.identifier.trim() && input.password.trim())) {
-        return alert("Please fill all input");
-      }
-
-      // Attempt login
       const data = await login(input);
+      console.log("Login Successful:", data);
 
-      console.log("Login Response Data:", data); 
-
-
-      // user role
-      const userRole = data.user.role; 
-      
-      if (!userRole) {
-        console.error("Role not found in response data");
-        return;
+      if (data?.user?.role) {
+        toast.success("Login Successful!",{});
+        
+        roleRedirect(data.user.role);
+      } else {
+        toast.error("Login failed: Invalid user data received.");
       }
-
-      alert('Login Successful');
-      roleRedirect(userRole);
-
     } catch (err) {
-      const errMsg = err.response?.data?.error || err.message;
-      console.log(errMsg);
-      alert(errMsg);
+      console.error("Login failed:", err);
+      toast.error(`Login Failed: ${err}`);
     }
   };
 

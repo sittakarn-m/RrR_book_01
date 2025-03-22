@@ -1,11 +1,12 @@
 import React from "react";
 import AddBookForm from "../../components/AddBookForm";
 
-
 function ManageBooks() {
   return (
     <div>
-      <AddBookForm/>
+      <div className="ml-[18%] flex">
+        <AddBookForm />
+      </div>
     </div>
   );
 }

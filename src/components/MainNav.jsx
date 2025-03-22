@@ -4,17 +4,18 @@ import { Logo, MenuDropdown, SearchIcon } from "../assets";
 import Register from "../pages/auth/Register";
 import Login from "../pages/auth/Login";
 import Menubar from "./Menubar";
-import useUserState from "../states/userState";
+import useUserState from "../states/useUserStore";
+import Cart from "./Cart";
 
 function MainNav() {
   const isLoggedIn = useUserState((state) => state.token); // Assuming token is set upon login
   const logout = useUserState((state) => state.logout);
 
   return (
-    <nav className="bg-white text-gray-700 navbar">
+    <nav className="bg-white text-gray-700 navbar shadow">
       {isLoggedIn ? (
         <div id="nav01" className="w-screen max-h-full">
-          <div className="flex flex-1 gap-4 bg-red-400 h-20 ">
+          <div className="flex flex-1 gap-4 h-20 ">
             <div className="flex align-middle items-center">
               <Menubar />
               <a href="/" className="">
@@ -30,17 +31,17 @@ function MainNav() {
             </div>
           </div>
 
-          <div className="flex flex-1 justify-end gap-4 bg-blue-400 h-20 ">
+          <div className="flex flex-1 justify-end gap-4 h-20 ">
             <div className="flex align-middle items-center">
               <SearchIcon />
               <div className="btn btn-ghost text-[18px]">Avatar</div>
-              <div className="btn btn-ghost text-[18px]">Cart</div>
+              <Cart/>
             </div>
           </div>
         </div>
       ) : (
         <div id="nav02" className="w-screen max-h-full">
-          <div className="flex flex-1 flex align-middle items-center ">
+          <div className="flex flex-1  align-middle items-center ">
             <a href="/">
               <Logo />
             </a>

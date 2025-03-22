@@ -1,5 +1,5 @@
 import React from "react";
-import ProductTest from "../../components/ProductList";
+import ProductList from "../../components/ProductList";
 
 export default function Store() {
   return (
@@ -24,14 +24,7 @@ export default function Store() {
         <div className="p-4">
           {/* card */}
 
-          {/* <div className="bg-blue-400 w-52 h-72 flex flex-col">
-            <div className="bg-green-400 basis-2/3 ">
-              <div className=" bg-red-400 h-full">Pic</div>
-            </div>
-            <div className=" bg-lime-600 basis-1/3">card body</div>
-          </div> */}
-
-          <ProductTest/>
+          <ProductList/>
 
 
         </div>

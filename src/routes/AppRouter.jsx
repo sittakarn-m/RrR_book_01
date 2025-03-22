@@ -19,6 +19,8 @@ import ManageBooks from "../pages/admin/ManageBooks";
 import ManageUsers from "../pages/admin/ManageUsers";
 import RentRequests from "../pages/admin/RentRequests";
 import Store from "../pages/store/Store";
+import ManageCategory from "../pages/admin/ManageCategory";
+import AdminLayout from "../layouts/AdminLayout";
 
 
 function AppRouter() {
@@ -53,9 +55,10 @@ function AppRouter() {
         </Route>
 
         {/* Private [ADMIN] */}
-        <Route path="admin" element={<Layout />}>
+        <Route path="admin" element={<AdminLayout />}>
           <Route index element={<Dashboard />} />
           <Route path="manage-books" element={<ManageBooks />} />
+          <Route path="manage-category" element={<ManageCategory />} />
           <Route path="manage-users" element={<ManageUsers />} />
           <Route path="rent-requests" element={<RentRequests />} />
         </Route>

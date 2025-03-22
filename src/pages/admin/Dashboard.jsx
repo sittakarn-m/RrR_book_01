@@ -3,9 +3,8 @@ import { Link } from 'react-router'
 
 function Dashboard() {
   return (
-    <div>
-      <Link className='btn' to='/admin/manage-books'>sdfsdf</Link>
-
+    <div className=''>
+      dashdash
     </div>
   )
 }
