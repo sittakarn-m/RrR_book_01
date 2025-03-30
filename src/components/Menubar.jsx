@@ -17,7 +17,7 @@ export default function Menubar() {
       <div className="drawer">
         <input id="my-drawer" type="checkbox" className="drawer-toggle" />
 
-        <div className="drawer-content">
+        <div className="drawer-content ">
           {/* Page content here */}
           <label
             htmlFor="my-drawer"
@@ -39,14 +39,14 @@ export default function Menubar() {
           </label>
         </div>
 
-        <div className="drawer-side">
+        <div className="drawer-side min-h-screen">
           <label
             htmlFor="my-drawer"
             aria-label="close sidebar"
-            className="drawer-overlay"
+            className="drawer-overlay bg-white min-h-screen"
           ></label>
 
-          <ul className="menu bg-base-200 text-base-content min-h-full w-80 p-4">
+          <ul className="menu bg-base-200 text-base-content min-h-screen w-80 p-4 pt-20 pr-20">
             {Array.isArray(category) &&
               category.map((cat) => <li key={cat.id} className="btn btn-ghost text-[18px] text-yellow-600">{cat.name}</li>)}
           </ul>

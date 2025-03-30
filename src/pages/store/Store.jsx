@@ -3,7 +3,7 @@ import ProductList from "../../components/ProductList";
 
 export default function Store() {
   return (
-    <div className="h-[2000px]">
+    <div className="min-h-fit mb-15 pb-20 pt-40">
       {/* photo bar */}
       <div className="hero bg-base-200 h-[400px] skeleton">
         <div className="hero-content text-center">

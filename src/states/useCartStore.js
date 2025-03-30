@@ -1,4 +1,5 @@
 import axios from "axios";
+import { toast } from "react-toastify";
 import { create } from "zustand";
 
 export const useCartStore = create((set, get) => ({
@@ -11,9 +12,11 @@ export const useCartStore = create((set, get) => ({
     set({ loading: true, error: null });
     try {
       const res = await axios.get("http://localhost:8899/user/cart", {
-        withCredentials: true, // ยังใช้ cookie-based session
+        withCredentials: true,
       });
-      console.log("Cart Data:", res.data);
+
+      // console.log("Cart Data:", res.data);
+
       set({ cart: res.data, loading: false });
     } catch (error) {
       console.error("Fetch Error:", error);
@@ -84,14 +87,27 @@ export const useCartStore = create((set, get) => ({
         {},
         { withCredentials: true }
       );
-
+  
       set({ cart: null });
+  
+      // เรียก fetchCart แล้วแสดงข้อความ
+      toast.success("Checkout success!");
+      await fetchCart();
+  
       return res.data;
     } catch (error) {
+      const message = error.response?.data?.message || "Error during checkout";
+  
+      // ถ้าเจอข้อความ Empty cart
+      if (message === "Empty cart") {
+        toast.warning("Your cart is empty.");
+      } 
+  
       set({
         error: true,
-        errorMsg: error.response?.data?.message || "Error during checkout",
+        errorMsg: message,
       });
     }
   },
+  
 }));

@@ -1,22 +1,32 @@
 import logoImg from "../assets/RR_4.png";
+import coverBook from "../assets/coverBooks02.webp";
 
 export const Logo = () => {
   return (
-    <div className=" btn btn-ghost">
-      <img src={logoImg} alt="picture" className="w-[80px] " />
+    <div className=" btn btn-ghost w-[150px] ">
+      <img src={logoImg} alt="picture" className="h-[120px] absolute p-5" />
     </div>
   );
 };
 
+export const HeroPic = () => {
+  return (
+    <div className="absolute top-0 left-0 w-full h-full -z-10 pointer-events-none opacity-20">
+      <img src={coverBook} alt="hero" className="w-full h-full object-cover" />
+    </div>
+  );
+};
+
+
 export const MenuDropdown = () => {
   return (
     <div className="flex">
-      <button className="btn btn-square btn-ghost pt-1">
+      <button className="btn btn-square btn-ghost pt-1 ">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
           viewBox="0 0 24 24"
-          className="inline-block h-5 w-5 stroke-current"
+          className="inline-block h-5 w-5 stroke-current ab"
         >
           <path
             strokeLinecap="round"
@@ -33,8 +43,8 @@ export const MenuDropdown = () => {
 export const SearchIcon = () => {
   return (
     <div className="flex">
-      <label className="input flex items-center gap-2">
-        <input type="text" className="grow"  />
+      <label className="input flex items-center gap-2 bg-white">
+        <input type="text" className="grow" />
         <svg
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 16 16"

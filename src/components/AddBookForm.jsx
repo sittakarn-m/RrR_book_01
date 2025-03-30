@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
+import { toast } from "react-toastify";
 
 function AddBookForm() {
   const [title, setTitle] = useState("");
@@ -31,7 +32,7 @@ function AddBookForm() {
         timeout: 2000,
       });
 
-      alert("Book added successfully");
+      toast.success("Book added successfully");
     } catch (error) {
       console.error("Error:", error);
       alert("Adding book failed: " + error.message);
@@ -39,62 +40,62 @@ function AddBookForm() {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="flex flex-col border w-96 ">
+    <form onSubmit={handleSubmit} className="flex flex-col border w-96 bg-white ">
       <input
-        className="border py-3"
+        className="border py-3 bg-white" 
         type="text"
         placeholder="Title"
         value={title}
         onChange={(e) => setTitle(e.target.value)}
       />
       <input
-        className="border py-3"
+        className="border py-3 bg-white"
         type="text"
         placeholder="Author"
         value={author}
         onChange={(e) => setAuthor(e.target.value)}
       />
       <input
-        className="border py-3"
+        className="border py-3 bg-white"
         type="text"
         placeholder="Publisher"
         value={publisher}
         onChange={(e) => setPublisher(e.target.value)}
       />
       <textarea
-        className="border py-3"
+        className="border py-3 bg-white"
         placeholder="Detail"
         value={detail}
         onChange={(e) => setDetail(e.target.value)}
       />
       <input
-        className="border py-3"
+        className="border py-3 bg-white"
         type="number"
         placeholder="Price Per Day"
         value={pricePerDay}
         onChange={(e) => setPricePerDay(e.target.value)}
       />
       <input
-        className="border py-3"
+        className="border py-3 bg-white"
         type="number"
         placeholder="Stock"
         value={stock}
         onChange={(e) => setStock(e.target.value)}
       />
       <input
-        className="border py-3"
+        className="border py-3 bg-white"
         type="number"
         placeholder="Category ID"
         value={categoryId}
         onChange={(e) => setCategoryId(e.target.value)}
       />
       <input
-        className="border py-3"
+        className="border py-3 bg-white"
         type="file"
         onChange={(e) => setCoverImage(e.target.files[0])}
       />
 
-      <button className="btn rounded-none" type="submit">
+      <button className="btn rounded-none bg-white text-black hover:bg-neutral-500 hover:text-white" type="submit">
         เพิ่มหนังสือ
       </button>
     </form>

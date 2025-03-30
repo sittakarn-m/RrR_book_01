@@ -1,12 +1,16 @@
-import React from 'react'
-import { Link } from 'react-router'
+import React from "react";
+import { Link } from "react-router-dom";
+import OrderList from "../../components/OrderList";
+import SearchBar from "../../components/SearchBar";
+import OrderTable from "../../components/OrderTable";
 
 function Dashboard() {
   return (
-    <div className=''>
-      dashdash
+    <div className="pt-40 pl-40 min-h-screen mb-20">
+      {/* <OrderTable /> */}
+      <OrderList />
     </div>
-  )
+  );
 }
 
-export default Dashboard 
+export default Dashboard;

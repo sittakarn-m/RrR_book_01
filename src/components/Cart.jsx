@@ -1,5 +1,7 @@
 import React, { useEffect } from "react";
 import { useCartStore } from "../states/useCartStore";
+import { toast } from "react-toastify";
+import { ShoppingCart } from 'lucide-react';
 
 function Cart() {
   const { cart, fetchCart, removeFromCart, updateCartItem, checkout, error } =
@@ -15,7 +17,7 @@ function Cart() {
         className="btn btn-ghost text-[18px]"
         onClick={() => document.getElementById("my_modal_2").showModal()}
       >
-        Cart ({cart?.books?.length || 0})
+        <ShoppingCart /> Cart ({cart?.books?.length || 0})
       </button>
 
       <dialog id="my_modal_2" className="modal">
@@ -80,8 +82,6 @@ function Cart() {
               className="btn bg-zinc-500 text-white"
               onClick={async () => {
                 await checkout();
-                alert("Checkout success!");
-                fetchCart(); // เคลียร์ cart
               }}
             >
               Checkout

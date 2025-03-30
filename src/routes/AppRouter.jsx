@@ -22,7 +22,6 @@ import Store from "../pages/store/Store";
 import ManageCategory from "../pages/admin/ManageCategory";
 import AdminLayout from "../layouts/AdminLayout";
 
-
 function AppRouter() {
   return (
     <>
@@ -33,6 +32,7 @@ function AppRouter() {
           <Route path="about" element={<About />} />
           <Route path="register" element={<Register />} />
           <Route path="login" element={<Login />} />
+          <Route path="book/:id" element={<ProductDetail />} />
         </Route>
 
         {/* Private [STORE] */}
@@ -40,7 +40,6 @@ function AppRouter() {
           <Route index element={<Store />} />
           <Route path="categories/all" element={<Categories />} />
           <Route path="categories/:name" element={<Categories />} />
-          <Route path="products/:productName" element={<ProductDetail />} />
           <Route path="cart" element={<Cart />} />
           <Route path="checkout" element={<Checkout />} />
         </Route>

@@ -3,7 +3,7 @@ import CategoryList from "../../components/CategoryList";
 
 function ManageCategory() {
   return (
-    <div className="bg-white">
+    <div className="bg-white pt-20">
       <CategoryList />
     </div>
   );

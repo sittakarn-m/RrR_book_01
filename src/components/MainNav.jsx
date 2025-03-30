@@ -10,9 +10,10 @@ import Cart from "./Cart";
 function MainNav() {
   const isLoggedIn = useUserState((state) => state.token); // Assuming token is set upon login
   const logout = useUserState((state) => state.logout);
+  
 
   return (
-    <nav className="bg-white text-gray-700 navbar shadow">
+    <nav className="bg-white text-gray-700 navbar shadow fixed top-0 left-0 w-full z-50">
       {isLoggedIn ? (
         <div id="nav01" className="w-screen max-h-full">
           <div className="flex flex-1 gap-4 h-20 ">
@@ -32,9 +33,9 @@ function MainNav() {
           </div>
 
           <div className="flex flex-1 justify-end gap-4 h-20 ">
-            <div className="flex align-middle items-center">
+            <div className="flex align-middle items-center ">
               <SearchIcon />
-              <div className="btn btn-ghost text-[18px]">Avatar</div>
+              <Link to={'/admin' || '*'} className="btn btn-ghost text-[18px]">Avatar</Link>
               <Cart/>
             </div>
           </div>

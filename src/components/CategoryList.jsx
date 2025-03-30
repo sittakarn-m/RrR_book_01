@@ -74,7 +74,7 @@ const CategoryList = () => {
         </button>
       </div>
 
-      <div className="overflow-x-auto rounded-box border border-base-content/4 bg-base-100 m-4 shadow p-5 w-[600px] bg-white">
+      <div className="overflow-x-auto rounded-box border border-base-100 bg-base-100 m-4 shadow p-5 w-[600px] ">
         <table className="table text-[20px]">
           <thead>
             <tr className="text-[18px]">
