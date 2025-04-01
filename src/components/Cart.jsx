@@ -1,11 +1,20 @@
 import React, { useEffect } from "react";
 import { useCartStore } from "../states/useCartStore";
 import { toast } from "react-toastify";
-import { ShoppingCart } from 'lucide-react';
+import { ShoppingCart } from "lucide-react";
+import useUserStore from "../states/useUserStore";
 
 function Cart() {
   const { cart, fetchCart, removeFromCart, updateCartItem, checkout, error } =
     useCartStore();
+
+  // const { token } = useUserStore();
+
+  // useEffect(() => {
+  //   if (!token) {
+  //     navigate("/login");
+  //   }
+  // }, [token]);
 
   useEffect(() => {
     fetchCart();

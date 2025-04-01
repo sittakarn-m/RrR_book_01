@@ -1,6 +1,8 @@
 import React from "react";
 import { Outlet, Route, Routes } from "react-router";
 import Layout from "../layouts/Layout";
+import ProtectedRoute from "../components/ProtectedRoute";
+import AdminRoute from "../components/AdminRoute";
 import Home from "../pages/Home";
 import Register from "../pages/auth/Register";
 import Login from "../pages/auth/Login";
@@ -36,16 +38,26 @@ function AppRouter() {
         </Route>
 
         {/* Private [STORE] */}
-        <Route path="store" element={<Layout />}>
+        <Route
+          path="store"
+          element={
+            <ProtectedRoute>
+              <Layout />
+            </ProtectedRoute>
+          }
+        >
           <Route index element={<Store />} />
-          <Route path="categories/all" element={<Categories />} />
-          <Route path="categories/:name" element={<Categories />} />
-          <Route path="cart" element={<Cart />} />
-          <Route path="checkout" element={<Checkout />} />
         </Route>
 
         {/* Private [USER] */}
-        <Route path="me" element={<Layout />}>
+        <Route
+          path="me"
+          element={
+            <ProtectedRoute>
+              <Layout />
+            </ProtectedRoute>
+          }
+        >
           <Route index element={<Overview />} />
           <Route path="account-info" element={<AccountInfo />} />
           <Route path="reset-password" element={<ResetPassword />} />
@@ -54,12 +66,19 @@ function AppRouter() {
         </Route>
 
         {/* Private [ADMIN] */}
-        <Route path="admin" element={<AdminLayout />}>
+        <Route
+          path="admin"
+          element={
+            <AdminRoute>
+              <AdminLayout />
+            </AdminRoute>
+          }
+        >
           <Route index element={<Dashboard />} />
           <Route path="manage-books" element={<ManageBooks />} />
           <Route path="manage-category" element={<ManageCategory />} />
           <Route path="manage-users" element={<ManageUsers />} />
-          <Route path="rent-requests" element={<RentRequests />} />
+          {/* <Route path="rent-requests" element={<RentRequests />} /> */}
         </Route>
 
         <Route path="*" element={<h1>404 not found</h1>} />

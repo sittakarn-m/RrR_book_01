@@ -29,7 +29,7 @@ const SearchBar = () => {
 
         <input
           type="text"
-          placeholder="Category (optional)"
+          placeholder="Category..."
           className="input input-bordered w-full"
           value={category}
           onChange={(e) => setCategory(e.target.value)}

@@ -24,6 +24,23 @@ export const useOrderStore = create((set) => ({
 
   // change order status
   // ChangeStatus
+  updateStatus: async (orderId, newStatus) => {
+    set({ loading: true, error: null });
+    try {
+      const res = await axios.patch(
+        `http://localhost:8899/order/${orderId}`,
+        {
+          status: newStatus,
+        }
+      );
 
-  
+      console.log("Status updated:", res.data);
+    } catch (error) {
+      set({
+        error: true,
+        loading: false,
+        errorMsg: error.response?.data?.message || "Error fetching orders",
+      });
+    }
+  },
 }));

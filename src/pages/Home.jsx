@@ -1,6 +1,7 @@
 import React from "react";
 import Register from "./auth/Register";
 import { HeroPic } from "../assets";
+import kid_01 from "../assets/kid_01.png";
 
 function Home() {
   return (
@@ -38,7 +39,11 @@ function Home() {
             </div>
           </div>
           <div className=" flex-1 bg-red-500 ">
-            <div className="bg-white m-4 h-fit">picture</div>
+            <div className="bg-white m-4 h-fit">reading ...</div>
+          </div>
+
+          <div className="absolute right-0 ">
+            <img src={kid_01} alt="" className="h-[80%]"/>
           </div>
         </div>
       </div>

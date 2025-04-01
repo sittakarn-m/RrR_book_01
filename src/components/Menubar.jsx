@@ -1,5 +1,7 @@
 import React, { useEffect } from "react";
 import { useCategoryStore } from "../states/useCategoryStore";
+import { Undo2 } from "lucide-react";
+import { Link } from "react-router";
 
 export default function Menubar() {
   const { category, loading, error, errorMsg, fetchCategory } =
@@ -48,7 +50,20 @@ export default function Menubar() {
 
           <ul className="menu bg-base-200 text-base-content min-h-screen w-80 p-4 pt-20 pr-20">
             {Array.isArray(category) &&
-              category.map((cat) => <li key={cat.id} className="btn btn-ghost text-[18px] text-yellow-600">{cat.name}</li>)}
+              category.map((cat) => (
+                <li
+                  key={cat.id}
+                  className="btn btn-ghost text-[18px] text-yellow-600"
+                >
+                  {cat.name}
+                </li>
+              ))}
+            <Link
+              to="/store"
+              className="btn btn-ghost rounded-full items-center w-full mt-6 text-gray-600"
+            >
+              <Undo2 />
+            </Link>
           </ul>
         </div>
       </div>

@@ -6,7 +6,7 @@ import OrderTable from "../../components/OrderTable";
 
 function Dashboard() {
   return (
-    <div className="pt-40 pl-40 min-h-screen mb-20">
+    <div className="pt-40 pl-[100px] min-h-screen mb-20">
       {/* <OrderTable /> */}
       <OrderList />
     </div>

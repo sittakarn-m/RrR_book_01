@@ -11,6 +11,7 @@ export const useBookStore = create((set, get) => ({
   error: false,
   errorMsg: "",
 
+
   fetchBooks: async () => {
     set({ loading: true });
     try {
@@ -73,6 +74,8 @@ export const useBookStore = create((set, get) => ({
   searchFilter: async () => {
     const { query, category, pricePerDay } = get();
     set({ loading: true });
+
+    if (!query) return get().fetchBooks();
 
     try {
       const res = await axios.post(

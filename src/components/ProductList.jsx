@@ -8,12 +8,13 @@ import { useBookStore } from "../states/useBookStore";
 const ProductList = () => {
   const navigate = useNavigate();
   const { addToCart, fetchCart } = useCartStore();
-  const { books, fetchBooks, loading, error, errorMsg } = useBookStore();
+  const { books, fetchBooks, query, loading, error, errorMsg } = useBookStore();
 
   useEffect(() => {
     fetchBooks();
     fetchCart();
   }, []);
+  console.log(books);
 
   useEffect(() => {
     const scrollY = localStorage.getItem("scrollPosition");
@@ -36,7 +37,7 @@ const ProductList = () => {
       console.log("book: ====>", book);
 
       if (book.status === "UNAVAILABLE") {
-       return toast.warning(`${book.title} out of Stock`);
+        return toast.warning(`${book.title} out of Stock`);
       }
 
       await addToCart(book.id, count);
@@ -50,7 +51,10 @@ const ProductList = () => {
 
   return (
     <div className="container mx-auto p-6">
-      <h1 className="text-2xl font-bold mb-4">สินค้าทั้งหมด</h1>
+      <h1 className="text-2xl font-bold mb-4">
+        {query ? `Results for "${query}"` : "All Books"}
+      </h1>
+
       <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
         {books.map((book) => (
           <div
@@ -74,7 +78,7 @@ const ProductList = () => {
             </p>
             <button
               onClick={(e) => {
-                e.stopPropagation(); // ✅ ป้องกัน event ไปถึง parent
+                e.stopPropagation();
                 handleAddToCart(book, 1);
               }}
               className="btn btn-active btn-accent hover:bg-blue-400 shadow-sm "
